@@ -1,0 +1,6 @@
+<div class="msg-block">
+	{% for m in messages() %}
+		<p data-name="{{m.key}}" class="alert alert-{{m.type}} text-{{m.type}} msg"><span class="close-msg">&times;</span> <span class="" style="display: block;">{{m.text}}</span></p>
+	{% endfor %}
+</div>
+

@@ -1,0 +1,16 @@
+{
+	"config": {
+		"vendor-dir": "components/composer"
+	},
+	"require": {
+		"smarty/smarty" : "3.1.*",
+		"gettext/gettext": "*",
+		"filp/whoops": "1.*",
+		"rmccue/requests": "*",
+		"imagine/imagine": "*",
+		"sybio/image-workshop": "2.0.*",
+		"php-activerecord/php-activerecord": "1.*",
+		"twig/twig": "1.*",
+		"kuria/console": "*"
+	}
+}

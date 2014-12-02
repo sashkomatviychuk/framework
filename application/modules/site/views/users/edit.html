@@ -1,0 +1,12 @@
+{extends "users/includes/form.html"}
+
+{block title}{_('Редагування профілю користувача')}{/block}
+
+{block form_head}{_('Редагування профілю користувача')}{/block}
+
+{block breadcrumbs}
+	<li><a href="{router name='users'}"><i class="fa fa-bar-chart-o"></i> {_('Користувачі')}</a></li>
+	<li class="active"><i class="fa fa-edit"></i> {_('Редагування профілю користувача')}</li>
+{/block}
+
+{block cancel_url}{router name='usersView' id=$ROUTER.params.id}{/block}

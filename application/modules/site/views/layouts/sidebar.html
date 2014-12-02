@@ -1,0 +1,51 @@
+<nav class="navbar-inverse"  role="navigation">
+	<ul class="nav navbar-nav side-nav">
+			<li {if $active_item == 'main' }class="active"{/if}><a href="{router name='home'}"><i class="fa fa-dashboard"></i> {_('Головна сторінка')}</a></li>
+			<li {if $active_item == 'users' }class="active"{/if}><a href="{router name='users'}"><i class="fa fa-bar-chart-o"></i> {_('Користувачі')}</a></li>
+		</ul>
+</nav>
+<nav class="navbar navbar-inverse navbar-fixed-top" style="opacity:0.9;  -webkit-box-shadow: 0 2px 10 rgba(0, 0, 0, .15);  box-shadow: 0 2px 10 rgba(0, 0, 0, .15);"  role="navigation">
+	<!-- Brand and toggle get grouped for better mobile display -->
+	<div class="navbar-header" >
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="/">{_('Панель управління')}</a>
+	</div>
+
+	<!-- Collect the nav links, forms, and other content for toggling -->
+	<div class="collapse navbar-collapse navbar-ex1-collapse">
+		<ul class="nav navbar-nav navbar-right navbar-user">
+			<li class="dropdown user-dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe"></i> {_('Мови')} <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					{foreach Config::get('langs.translation') as $title key=code}
+						 <li><a href="{url lang=$code}"><i class="{if $code == $lang}fa fa-check{/if}"></i> {$title}</a></li>
+					{/foreach}
+				</ul>
+			</li>
+			<li class="dropdown user-dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Username <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li><a href="#"><i class="fa fa-user"></i> {_('Профіль')}</a></li>
+					<li><a href="#"><i class="fa fa-gear"></i> {_('Налаштування')}</a></li>
+					<li class="divider"></li>
+					<li><a href="{router name='logout'}/?r={url}"><i class="fa fa-power-off"></i> {_('Вийти')}</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div><!-- /.navbar-collapse -->
+	{* {nocache} *}
+		{if Message::has()}
+			{$MSG = Message::pop()}
+			<div class=" navbar-collapse navbar-ex1-collapse message  alert-{$MSG.type} hide js-alert-message" style="">
+				<span class="pull-left fa fa-2x fa-{if $MSG.type == 'danger'}warning{else}{$MSG.type}{/if}"></span>&nbsp;
+				<span class="pull-left" style="font-size: 16px;">{$MSG.text}</span>
+				<a href="#" class="btn btn-default pull-right message-close">Close</a>
+			</div>
+		{/if}
+	{* {/nocache} *}
+</nav>

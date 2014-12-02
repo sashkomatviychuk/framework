@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+		<!-- Add custom CSS here -->
+		<link rel="stylesheet" type="text/css" href="/public/css/bootstrap.css">
+		<link href="/public/css/sb-admin.css" rel="stylesheet">
+		<link rel="stylesheet" href="/public/fonts/font-awesome.min.css">
+		{block styles }{/block}
+		<!-- end of css block -->
+		<!-- Add custom javascript here -->
+		<script type="text/javascript" src="/public/js/jquery/jquery.min.js"></script>
+		<script type="text/javascript" src="/public/js/app.min.js"></script>
+		{block scripts }{/block}
+		<!-- end of js block -->
+		<style>
+			ul.nav::-webkit-scrollbar{
+				width: 8px;
+				background-color: #333333;
+			}
+			ul.nav::-webkit-scrollbar-thumb{
+				width: 8px;
+				height: 12px;
+				border-radius: 2px;
+				background-color: #888;
+			}
+			ul.nav::-webkit-scrollbar-thumb:hover{
+				background-color: #777;
+				cursor: pointer;
+			}
+		</style>
+		<meta name="description">
+		<meta name="key">
+		<title>{block title }{_('Вхід в систему')}{/block}</title>
+	</head>
+	<body>
+
+	<div class="">
+			{block content }{/block}
+	</div>
+
+		<!-- JavaScript -->
+		<script src="/public/js/bootstrap/bootstrap.min.js"></script>
+
+	</body>
+</html>

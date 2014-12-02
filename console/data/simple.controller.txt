@@ -1,0 +1,55 @@
+<?php
+
+	/**
+	 *
+	 */
+	namespace Controller;
+
+	/**
+	 *
+	 */
+	use \Core\Controller as Controller;
+
+	/**
+	 *
+	 */
+	class {c_name} extends Controller
+	{
+		/**
+		 *
+		 */
+		public function filter()
+		{
+			return array(
+				'ajaxOnly'  => array(),
+				'getOnly'   => array(),
+				'postOnly'  => array(),
+				'ajaxNone'  => array(),
+				'getNone'   => array(),
+				'postNone'  => array(),
+				'guestOnly' => array(),
+				'userOnly'  => array(),
+				'deny'      => array()
+			);
+		}
+
+		/**
+		 *
+		 */
+		public function accessRules()
+		{
+			return array(
+				'guest' => array('index'),
+				'user'  => array(),
+				'admin' => array()
+			);
+		}
+
+		/**
+		 *
+		 */
+		public function actionIndex()
+		{
+			$this->render('{v_name}/index');
+		}
+	}

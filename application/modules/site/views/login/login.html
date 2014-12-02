@@ -1,0 +1,24 @@
+{extends 'layouts/login.base.html'}
+
+{block content }
+
+	<div class="col-md-4"></div>
+	<div class="panel panel-default col-md-4" style="width:30%;">
+		<div class="panel-body " >
+			<h1>{_('Вхід в систему')}</h1>
+			<form action="" method="POST">
+				<div class="form-group">
+					<label for="login">{_('Логін')}</label>
+					<input name="login" class="form-control" placeholder="{_('Введіть логін')}" autofocus>
+				</div>
+				<div class="form-group">
+					<label for="pass">{_('Пароль')}</label>
+					<input name="pass" class="form-control" type="password"  placeholder="{_('Введіть пароль')}">
+				</div>
+				<button type="submit" class="btn btn-primary">{_('Вхід')}</button>
+			</form>
+		</div>
+	</div>
+	<div class="col-md-4"></div>
+
+{/block}

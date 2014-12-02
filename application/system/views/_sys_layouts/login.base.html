@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+		<!-- Add custom CSS here -->
+		<link rel="stylesheet" type="text/css" href="/public/css/bootstrap.css">
+		<link href="/public/css/sb-admin.css" rel="stylesheet">
+		<link rel="stylesheet" href="/public/fonts/font-awesome.min.css">
+		{% block styles %}{% endblock %}
+		<!-- end of css block -->
+		<!-- Add custom javascript here -->
+		<script type="text/javascript" src="/public/js/jquery/jquery.min.js"></script>
+		<script type="text/javascript" src="/public/js/app.min.js"></script>
+		<script type="text/javascript">
+			if ( typeof App == 'undefined') {
+				App = {};
+			}
+			{% if js is defined %}
+				{% for i, k in js|keys %}
+					App._data['{{k}}'] = '{{js[k]}}';
+				{% endfor %}
+			{% endif %}
+		</script>
+		{% block scripts %}{% endblock %}
+		<!-- end of js block -->
+		<style>
+			ul.nav::-webkit-scrollbar{
+				width: 8px;
+				background-color: #333333;
+			}
+			ul.nav::-webkit-scrollbar-thumb{
+				width: 8px;
+				height: 12px;
+				border-radius: 2px;
+				background-color: #888;
+			}
+			ul.nav::-webkit-scrollbar-thumb:hover{
+				background-color: #777;
+				cursor: pointer;
+			}
+		</style>
+		<meta name="description">
+		<meta name="key">
+		<title>{% block title %}MyApplication{% endblock %}</title>
+	</head>
+	<body>
+
+	<div class="">
+			{% block content %}{% endblock %}
+	</div>
+
+		<!-- JavaScript -->
+		<script src="/public/js/bootstrap/bootstrap.min.js"></script>
+
+	</body>
+</html>

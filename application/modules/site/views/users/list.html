@@ -1,0 +1,52 @@
+{extends "base.html"}
+
+{block name="active_item"}
+	{$active_item = 'users'}
+{/block}
+
+{block title}{_('Список користувачів')}{/block}
+
+{block breadcrumbs}
+	<li class="active"><i class="fa fa-bar-chart-o"></i> {_('Користувачі')}</li>
+{/block}
+
+{block content}
+	<h1>{_('Список користувачів')}</h1>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<a href="{router name='usersAdd'}" class="btn btn-default btn-sm">{_('Додати')}</a>
+		</div>
+		<div class="panel-body">
+			<table class="table table-bordered table-hover table-striped tablesorter">
+				<thead>
+					<tr>
+						<th class="header">#</th>
+						<th class="header">{_('Ім`я')}</th>
+						<th class="header">{_('Активний')}</th>
+						<th class="header">{_('Опції')}</th>
+					</tr>
+				</thead>
+				<tbody>
+					{foreach $users as $user}
+						<tr>
+							<td>{$user->id}</td>
+							<td>
+								<a href="{router name='usersView' id=$user->id}">{$user->login}</a>
+							</td>
+							<td><span class="label label-{if $user->is_active}primary{else}default{/if}">{if $user->is_active}{_('Так')}{else}{_('Ні')}{/if}</span></td>
+							<td><a class="btn btn-default btn-xs" href="{router name='usersEdit' id=$user->id}"><span class="fa fa-edit"></span> {_('Редагувати')}</a>
+								<a class="btn btn-default btn-xs js-remove-url" data-confirm="Видалити?" href="{router name='usersDelete' id=$user->id}" data-alert="ok?"><span class="fa fa-trash-o"></span> {_('Видалити')}</a>
+								<a class="btn btn-default btn-xs" href="{router name='shadowLogin' id=$user->id}"><span class="fa fa-share"></span> {_('Shadow')}</a>
+							</td>
+						</tr>
+					{foreachelse}
+						<tr>
+							<td colspan="4">{_('Список порожній')}</td>
+						</tr>
+					{/foreach}
+				</tbody>
+			</table>
+			{* {widget('pagination', 'Users')} *}
+		</div>
+	</div>
+{/block}

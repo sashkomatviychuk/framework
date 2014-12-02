@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+	<h1>Profile</h1>
+	<p>See or update your profile!</p>
+	<p class="">
+		<div class="panel">
+			<div>
+				<span class="pull-left" style="width: 100px;">Login:</span>{{user.login}}</div>
+			<div>
+				<span class="pull-left" style="width: 100px;">About:</span>{{user.about}}
+			</div>
+			<div>
+				<span class="pull-left" style="width: 100px;">Image:</span>
+				<img src="{{user.photo_url['100x100']}}" alt="{{user.login}}" style="max-width: 90%;">
+			</div>
+			<div>
+				<a href="{{url('profileEdit')}}" class="btn btn-default btn-xs">Edit your profile</a>
+			</div>
+		</div>
+	</p>
+{% endblock %}

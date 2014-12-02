@@ -1,0 +1,87 @@
+<?php
+
+	/**
+	 *
+	 */
+	namespace Controller;
+
+	/**
+	 *
+	 */
+	use \Core\Controller as Controller;
+
+	/**
+	 *
+	 */
+	class {c_name} extends Controller
+	{
+		/**
+		 *
+		 */
+		public function filter()
+		{
+			return array(
+				'ajaxOnly'  => array(),
+				'getOnly'   => array(),
+				'postOnly'  => array(),
+				'ajaxNone'  => array(),
+				'getNone'   => array(),
+				'postNone'  => array(),
+				'guestOnly' => array(),
+				'userOnly'  => array(),
+				'deny'      => array()
+			);
+		}
+
+		/**
+		 *
+		 */
+		public function accessRules()
+		{
+			return array(
+				'guest' => array('list', 'view','create','update','delete'),
+				'user'  => array(),
+				'admin' => array()
+			);
+		}
+
+		/**
+		 *
+		 */
+		public function actionList()
+		{
+			$this->render('{v_name}/list');
+		}
+
+		/**
+		 *
+		 */
+		public function actionView()
+		{
+			$this->render('{v_name}/view');
+		}
+
+		/**
+		 *
+		 */
+		public function actionCreate()
+		{
+			$this->render('{v_name}/create');
+		}
+
+		/**
+		 *
+		 */
+		public function actionUpdate()
+		{
+			$this->render('{v_name}/update');
+		}
+
+		/**
+		 *
+		 */
+		public function actionDelete()
+		{
+
+		}
+	}

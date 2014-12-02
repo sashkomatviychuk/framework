@@ -1,0 +1,42 @@
+{extends "base.html"}
+
+{block title}{_('Користувач')} {$user->login}{/block}
+
+{block breadcrumbs}
+	<li><a href="{router name='users'}"><i class="fa fa-bar-chart-o"></i> {_('Користувачі')}</a></li>
+	<li class="active"><i class="fa fa-view"></i> {('Перегляд інформації')}</li>
+{/block}
+
+{block name="active_item"}
+	{$active_item = 'users'}
+{/block}
+
+{block content}
+	<h1>{_('Інформація')}</h1>
+	<div class="panel panel-default" style="width: 60%;">
+		<div class="panel-heading">
+			{_('Інформація про користувача')}
+		</div>
+		<div class="panel-body">
+			<div class="media-body">
+				<dl class="dl-horizontal">
+					<dt>#</dt>
+					<dd>{$user->id}</dd>
+					<dt>{_('Login')}</dt>
+					<dd>{$user->login}</dd>
+					<dt>{_('Email')}</dt>
+					<dd>{if $user->email}{$user->email}{else}-{/if}</dd>
+					<dt>{_('Active')}</dt>
+					<dd>{if $user->is_active}yes{else}no{/if}</dd>
+				</dl>
+			</div>
+		</div>
+		<div class="panel-footer">
+			<a href="{router name='users'}" class="btn btn-default btn-sm">{_('Список')}</a>
+			<div class="pull-right">
+				<a href="{router name='usersEdit' id=$user->id}" class="btn btn-primary btn-sm">{_('Редагувати')}</a>
+				<a href="{router name='usersDelete' id=$user->id}" class="btn btn-danger btn-sm">{_('Видалити')}</a>
+			</div>
+		</div>
+	</div>
+{/block}

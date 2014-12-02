@@ -1,0 +1,44 @@
+{{persist()}}
+	<form {% for attr, k in attrs|keys %}{{k}}="{{attrs[k]}}" {% endfor %}>
+		{% for field, i in fields|keys %}
+			<div class="{% if fields[i].type != 'hidden' %}form-group{% endif %}">
+				{% if fields[i].type != 'hidden' %}<label for="{{i}}">{{fields[i].label}}</label>{% endif %}
+				{% if fields[i].type == 'text' %}
+					<input type="text" name="{{i}}" {% for attr, k in fields[i].attrs|keys %}{{k}}="{{fields[i].attrs[k]}}" {% endfor %}>
+				{% elseif fields[i].type == 'textarea' %}
+					<textarea name="{{i}}" {% for attr, k in fields[i].attrs|keys %}{{k}}="{{fields[i].attrs[k]}}"{% endfor %}></textarea>
+				{% elseif fields[i].type == 'hidden' %}
+					<input type="hidden" name="{{i}}" {% for attr, k in fields[i].attrs|keys %}{{k}}="{{fields[i].attrs[k]}}"{% endfor %}>
+				{% elseif fields[i].type == 'password' %}
+					<input type="password" name="{{i}}" {% for attr, k in fields[i].attrs|keys %}{{k}}="{{fields[i].attrs[k]}}"{% endfor %}>
+				{% elseif fields[i].type == 'checkbox' %}
+					{% for item in field.items %}
+						<input type="checkbox" name="{{i}}" {% for attr, k in fields[i].attrs|keys %}{{k}}="{{fields[i].attrs[k]}}"{% endfor %} value="{{loop.index}}"> {{item}} <br />
+					{% endfor %}
+				{% elseif fields[i].type == 'radio' %}
+					{% for item in field.items %}
+						<input type="radio" name="{{i}}" {% for attr, k in fields[i].attrs|keys %}{{k}}="{{fields[i].attrs[k]}}"{% endfor %} value="{{loop.index}}"> {{item}} <br />
+					{% endfor %}
+				{% elseif fields[i].type == 'select' %}
+					<select name="{{i}}" {% for attr, k in fields[i].attrs|keys %}{{k}}="{{fields[i].attrs[k]}}"{% endfor %}>
+						<option value=""></option>
+						{% for item in field.items %}
+							<option value="{{loop.index}}">{{item}}</option>
+						{% endfor %}
+					</select>
+				{% elseif fields[i].type == 'bool' %}
+					<input type="hidden" name="{{i}}" value="0">
+					<div class="checkbox">
+						<label for="">
+							<input type="checkbox" name="{{i}}" value="1" {% for attr, k in fields[i].attrs|keys %}{{k}}="{{fields[i].attrs[k]}}"{% endfor %}> {{ fields[i].text}}
+						</label>
+					</div>
+				{% else %}
+					<input type="text" name="{{i}}" {% for attr, k in fields[i].attrs|keys %}{{k}}="{{fields[i].attrs[k]}}"{% endfor %}>
+				{% endif %}
+			</div>
+		{% endfor %}
+			<button type="submit" class="btn btn-success btn-sm">Зберегти</button>
+			<a href="{{url}}" class="btn btn-danger btn-sm">Назад</a>
+	</form>
+{{end_persist()}}

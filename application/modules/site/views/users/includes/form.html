@@ -1,0 +1,41 @@
+{extends "base.html"}
+
+{block name="active_item"}
+	{$active_item = 'users'}
+{/block}
+
+{block content}
+	<h1>{block form_head}{/block}</h1>
+	<div class="panel panel-default" style="width: 60%;">
+		<div class="panel-body">
+			{persist}
+				<form action="" method="POST">
+					<input type="hidden" name="token" value="{$this->token()}">
+					<div class="form-group">
+						<label for="login">{_('Логін')}</label>
+						<input type="text" name="login" class="form-control" autofocus>
+					</div>
+					<div class="form-group">
+						<label for="email">{_('Емейл')}</label>
+						<input type="email" name="email" class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="about">{_('Опис')}</label>
+						<textarea name="about" class="form-control"></textarea>
+					</div>
+					<div class="form-group">
+						<label for="is_active">{_('Активний')}</label>
+						<input type="hidden" name="is_active" value="0">
+						<div class="checkbox">
+							<label for="">
+								<input type="checkbox" name="is_active" value="1"> {_('Так')}
+							</label>
+						</div>
+					</div>
+					<button type="submit" class="btn btn-success btn-sm">{_('Зберегти')}</button>
+					<a href="{block cancel_url}{router name='users'}{/block}" class="btn btn-danger btn-sm">{_('Назад')}</a>
+				</form>
+			{/persist}
+		</div>
+	</div>
+{/block}

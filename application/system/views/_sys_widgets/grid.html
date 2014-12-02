@@ -1,0 +1,28 @@
+<table class="table table-bordered table-hover table-striped tablesorter">
+	<thead>
+		<tr>
+			{% for col, k in grid.cols|keys %}
+				<th class="header">{% if grid.cols[k] is iterable %}{{labels[k]}}{% else %}{{labels[grid.cols[col]]}}{% endif %}</th>
+			{% endfor %}
+			<th class="header">Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for item in grid.data %}
+			<tr>
+				{% for col, k in grid.cols|keys %}
+					<td>{{item[{{k}}]}}</td>
+				{% endfor %}
+				<!-- <td><a class="btn btn-default btn-xs" href="{{url('usersEdit', {'id' : user.id})}}"><span class="fa fa-edit"></span> Edit</a>
+					<a class="btn btn-default btn-xs js-remove-url" data-confirm="Видалити?" href="{{url('usersDelete', {'id' : user.id}, true)}}" data-alert="ok?"><span class="fa fa-trash-o"></span> Delete</a>
+					<a class="btn btn-default btn-xs" href="{{url('shadowLogin', {'id' : user.id})}}"><span class="fa fa-share"></span> Shadow</a>
+				</td> -->
+				<td></td>
+			</tr>
+		{% else %}
+		<tr>
+			<td colspan="4">Список порожній</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>

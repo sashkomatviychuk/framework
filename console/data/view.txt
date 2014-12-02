@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<p>
+	It`s module <b>{v_name}</b>
+</p>
+<p>
+	<b>View path:</b>{v_path}
+</p>
+{% endblock %}

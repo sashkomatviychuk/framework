@@ -1,0 +1,2 @@
+Its file {v_path}
+{% block body %}{% endblock %}

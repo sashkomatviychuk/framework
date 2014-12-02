@@ -1,0 +1,40 @@
+<?php
+
+	/**
+	 *
+	 */
+	namespace Model;
+
+	/**
+	 *
+	 */
+	use ActiveRecord\Model as ORM;
+
+	/**
+	 *
+	 */
+	class {class} extends ORM
+	{
+		/**
+		 *
+		 */
+		static $table_name = '{table}';
+
+		/**
+		 *
+		 */
+		static $primary_key = 'id';
+
+		/**
+		 *
+		 */
+		static $before_create = array('before_create');
+
+		/**
+		 *
+		 */
+		public function before_create()
+		{
+		}
+
+	}
